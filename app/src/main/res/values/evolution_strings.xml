@@ -11,4 +11,8 @@
     <string name="support_firmware">Firmware</string>
     <string name="support_donate">Donate</string>
 
+    <string name="pref_category_appearance">Appearance</string>
+    <string name="menu_show_logo">Show logo</string>
+    <string name="menu_show_logo_summary">Show the Evolution X logo on the main screen</string>
+
 </resources>
