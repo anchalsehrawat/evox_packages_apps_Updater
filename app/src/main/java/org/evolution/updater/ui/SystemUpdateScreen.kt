@@ -156,6 +156,15 @@ fun SystemUpdateScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Column(modifier = Modifier.widthIn(max = ContentMaxWidth)) {
+                if (showDeviceInfo && showLogo) {
+                    EvolutionLogoGlow(
+                        contentDescription = stringResource(R.string.brand_name),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = HorizontalPadding, end = HorizontalPadding),
+                    )
+                }
+
                 ScreenHeader(headline)
 
                 supportingText?.let {
@@ -178,7 +187,6 @@ fun SystemUpdateScreen(
                 if (showDeviceInfo) {
                     DeviceInfoText(
                         maintainer = supportInfo.maintainer,
-                        showLogo = showLogo,
                         modifier = Modifier.padding(
                             start = HorizontalPadding,
                             top = 32.dp,
@@ -549,7 +557,6 @@ private fun CheckForUpdateButton(
 @Composable
 private fun DeviceInfoText(
     maintainer: String?,
-    showLogo: Boolean,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -562,14 +569,6 @@ private fun DeviceInfoText(
     }
 
     Column(modifier = modifier) {
-        if (showLogo) {
-            EvolutionLogoGlow(
-                contentDescription = stringResource(R.string.brand_name),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 16.dp),
-            )
-        }
         InfoLine(stringResource(R.string.header_lineage_version, DeviceInfoUtils.buildVersion))
         InfoLine(stringResource(R.string.header_android_version_full, DeviceInfoUtils.androidVersion))
         InfoLine(stringResource(R.string.header_security_update_full, securityPatch))
